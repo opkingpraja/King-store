@@ -113,7 +113,7 @@ products.forEach(function(product, index) {
 
     buyBtn.addEventListener("click", function(e) {
       e.stopPropagation();
-      window.location.href = "/Web html/Buy.html"; // Navigate to the Buy page
+      window.location.href = "Buy.html"; // Navigate to the Buy page
     });
 
     let cartBtn = div.querySelector(".cartButton");
