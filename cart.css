@@ -1,0 +1,161 @@
+#container-table {
+  width: 100%;
+  background-color: transparent;
+  overflow-x: auto;
+}
+
+#cart-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+#cartoption {
+  
+  min-width: 700px; 
+  border-collapse: collapse;
+  width: 100%;
+  background-color: transparent;
+  transition: max-height 0.5s ease-in-out;
+  text-align: center;
+  display: none;
+}
+
+th, td {
+  border: 1px solid #AB52FF;
+  padding: 10px;
+  text-align: center;
+}
+
+
+th {
+  background-color: #6E81E5;
+  color: white;
+}
+
+
+/* Quantity Button Styling */ 
+      
+      .incQty, .decQty { padding: 4px 10px; margin: 0 5px; border: none; border-radius: 4px; background-color: #4CAF50; color: white; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease; }
+
+/* Quantity Number Styling */ 
+
+      .qtyValue { font-size: 16px; margin: 0 8px; display: inline-block; min-width: 20px; text-align: center;
+}
+
+
+.removeBtn{
+  border: none;
+  background-color: red;
+  font-size: 1rem;
+  padding: 4px;
+  color: #FFFFFF;
+ }
+ 
+
+
+    #cartbtn {
+      background: #00bcd4;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 20%;
+      font-size: 16px;
+      margin-top: 15px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #cartbtn:hover {
+      background: #00acc1;
+    }
+
+
+
+
+.custom-alert {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.custom-alert {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);  /* dark background */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* इसे बहुत high रखें */
+}
+
+.custom-alert {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.alert-content {
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+  animation: slideUp 0.4s ease-in-out;
+}
+
+.btnConfirm, .btnCancel {
+  padding: 8px 18px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btnConfirm {
+  background-color: #28a745;
+  color: white;
+}
+
+.btnCancel {
+  background-color: #dc3545;
+  color: white;
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+} 
+
+
+
+#closeAlertBtn{
+  height: auto;
+  width: 3rem;
+  background-color: green;
+  padding: 6px;
+  font-weight: 700;
+  color: white;
+}

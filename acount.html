@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clly Account</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1a1a2e, #16213e, #0f3460);
+      background-size: 600% 600%;
+      animation: animateBG 20s ease infinite;
+      color: white;
+      padding: 1em;
+      min-height: 100vh;
+    }
+
+    @keyframes animateBG {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    #information {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2em;
+      border-radius: 25px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+      max-width: 600px;
+      margin: auto;
+      color: white;
+      margin-top: 5em;
+    }
+
+    #logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1.5em;
+    }
+
+    #inlogo {
+      border-radius: 50%;
+      border: 6px double white;
+      padding: 0.5em;
+    }
+
+    #inlogo i {
+      font-size: 5em;
+      color: #E0C9C3;
+    }
+
+    .in-information {
+      width: 100%;
+      margin: 1em 0;
+    }
+
+    .in-information input,
+    .in-information textarea {
+      width: 100%;
+      padding: 1em;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      background: #f0f0f0;
+      color: black;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    #information button {
+      width: 100%;
+      padding: 1.1em;
+      margin-top: 1.5em;
+      border: none;
+      border-radius: 10px;
+      background-color: #1a73e8;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    @media (max-width: 480px) {
+      #inlogo i {
+        font-size: 4em;
+      }
+
+      #information {
+        padding: 1.5em;
+      }
+
+      .in-information input,
+      .in-information textarea {
+        font-size: 0.95em;
+      }
+
+      #information button {
+        font-size: 1rem;
+      }
+    }
+
+    /* Success Prompt */
+    #successPrompt {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #4BB543;
+      color: white;
+      padding: 1em 2em;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.1em;
+      z-index: 999;
+      transition: opacity 0.5s ease;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="information">
+
+    <div id="logo">
+      <div id="inlogo">
+        <i class="fa-solid fa-circle-user"></i>
+      </div>
+    </div>
+
+    <div class="in-information">Name <br>
+      <input type="text" name="name" id="username" placeholder="Enter Your Name">
+    </div>
+
+    <div class="in-information">E-mail <br>
+      <input type="email" name="email" id="email" placeholder="Enter Your E-mail">
+    </div>
+
+    <div class="in-information">Enter Your Date Of Birth<br>
+      <input type="date" name="date" id="date">
+    </div>
+
+    <div class="in-information">Country<br>
+      <input type="text" name="country" id="country" placeholder="Enter Your Country">
+    </div>
+
+    <div class="in-information">State <br>
+      <input type="text" name="state" id="state" placeholder="Enter Your State">
+    </div>
+
+    <div class="in-information">City <br>
+      <input type="text" name="city" id="city" placeholder="Enter Your City">
+    </div>
+
+    <div class="in-information">Phone Number <br>
+      <input type="number" name="number" id="number" placeholder="Enter Your Number">
+    </div>
+
+    <div class="in-information">Add Location Bio <br>
+      <textarea name="message" id="message" placeholder="Write something..."></textarea>
+    </div>
+
+    <button>Save</button>
+
+  </div>
+
+
+
+
+<script type="module" src="/Web html/Fiarbass-account.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #E7ECEF;
+  font-family: sans-serif;
+}
+
+
+  #navleft{
+    display: flex;
+    height: 4em;
+    width: 100%;
+    background-color: #1F1F21;
+    color: #FFFFFF;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .n{
+    height: 3em;
+    width: 15%;
+    color: #FFFFFF;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+  }
+  
+    #navright{
+    width: 100%;
+    height: 4em;
+    background-color: #1F1F21;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0px;
+    top: 0px;
+  }
+  
+
+  
+  #navright input {
+    width: 90%;
+    height: 3em;
+    background-color: #1F1F21;
+    border: 2px solid #DD7E40;
+    margin: 2%;
+    border-radius: 0.6em;
+  }
+  
+
+#mode i{
+  transform: rotate(180deg)
+}
+
+
+
+/* Slider styles */
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid black;
+  border-left: none;
+  border-right: none;
+  margin-top: 0.5em;
+}
+
+.slider {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.slider img {
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 2rem;
+  padding: 4px;
+}
+
+/* Category slect */
+
+
+#categorybox{
+  width: 100%;
+  height: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0px;
+  margin-top: 6px;
+  padding: 0px;
+}
+
+#categoryB{
+  width: 90%;
+  height: 3em;
+  background-color: #FF6E00;
+  color: #FFFFFF;
+  border: 2px solid #96521A;
+  border-radius: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  font-size: 1rem;
+  font-weight: 900;
+  padding: 0px;
+}
+
+
+#category {
+  display: none;
+  background-color: transparent;
+  padding: 10px;
+  font-size: 1.5rem;
+  box-sizing: content-box;
+  color: #FFFFFF;
+  padding: 2rem;
+  position: relative;
+  margin-top: 4px;
+  padding-top: 0px;
+  transition: max-height 0.5s ease-in-out;
+
+}
+
+
+#category div{
+  text-align: center;
+  padding: 5px;
+  border-radius: 0.5em;
+  background-color: transparent;
+  border: 2px solid #E96740;
+  box-shadow: 2px 2px 6px #000000;
+  
+  }
+  
+#category ul {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+  
+  #category div ul li{
+    list-style: none;
+    background-color: #FF6E00;
+    margin: 2px;
+    border-radius: 1.5rem;
+    padding: 4px;
+  }
+  
+      /* menu options */
+    
+      #menuoption{
+        display: none;
+        width: 100%;
+        background-color: #000000;
+        transition: max-height 0.5s ease-in-out;
+      }
+      
+      #menuoption div{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+      
+    #menuoption div ul li{
+    list-style: none;
+    background-color: #3D3535;
+    color: #FFFFFF;
+    margin: 2px;
+    border-radius: 1.5rem;
+    padding: 14px;
+    text-align: center;
+    font-weight: 700;
+      }
+      
+
+li{
+    cursor: pointer;
+}
+      
+.imgstyle{
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+
+.detailstyle{
+  grid-row: 2/3;
+  grid-column: 1/2;
+  border:1px solid black;
+  background-color: #E7ECEF;
+}
+
+.n{
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+      #menuoption div ul li a{
+        text-decoration: none;
+        color: #FFFFFF;
+      }

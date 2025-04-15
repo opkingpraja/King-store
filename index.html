@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clly</title>
+  <link rel="stylesheet" href="web.css">
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="cart.css">
+  
+  <link rel="stylesheet" href="product.css">
+  
+  <style>
+    .n {
+  background-color: black;
+  cursor: pointer;
+  cursor: pointer;
+}
+
+.n.active {
+  border: 2px solid white;
+  border-bottom: none;
+  background-color: #1F1F21;
+}
+  </style>
+  
+</head>
+
+<body>
+
+  <!--Navleft propertys-->
+
+  <div id="navleft">
+    <div id="menu" class="n"><i class="fa-solid fa-bars"></i></div>
+    <div id="home" class="n">
+      <i class="fa-solid fa-house"></i></div>
+    <div id="cart" class="n"><i class="fa-solid fa-cart-arrow-down"></i></div>
+    <div id="mode" class="n modechange"><i class="fa-solid fa-hourglass-start"></i></div>
+    <div id="order" class="n">
+      <i class="fa-solid fa-box"></i></div>
+    <a href="/Web html/acount.html" id="acount" class="n">
+      <i class="fa-solid fa-user"></i></a>
+  </div>
+
+  <!--cart Options-->
+
+<div id="container-table">
+<table id="cartoption">
+  <thead>
+    <tr>
+      <th>Remove</th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Quantity</th>
+      <th>Unit Price</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+  <tbody id="cart-body">
+   
+  </tbody>
+</table>
+</div>
+
+
+<!--Menuoptions Propertys-->
+
+  <div id="menuoption">
+    <div>
+      <ul>
+        <li class="modechange">Mode</li>
+        <li><a href="acount.html">Edit Profile</a></li>
+        <li><a href="acount.html"></a>Acount</li>
+      </ul>
+    </div>
+  </div>
+
+<!--Navright Propertys-->
+
+  <div id="navright">
+<input type="text" id="searchInput" placeholder="  Search Hear...">
+  </div>
+
+<!--Benner Sliding Propertys-->
+
+  <div class="slider-container">
+    <div class="slider" id="slider">
+      <img src="https://ik.imagekit.io/Prajapati/Benner1.jpg?updatedAt=1744544703953" alt="benner-1">
+      <img src="https://ik.imagekit.io/Prajapati/Benner1.jpg?updatedAt=1744544703953" alt="benner-2">
+      <img src="https://ik.imagekit.io/Prajapati/Benner1.jpg?updatedAt=1744544703953" alt="benner-3">
+    </div>
+  </div>
+
+<!--Category button propertys-->
+
+  <div id="categorybox"><button id="categoryB">Category</button></div>
+  <div id="category">
+    <div>
+      <ul>
+        <li>Cosmetics</li>
+        <li>Journal</li>
+        <li>Medical</li>
+        <li>Electronic</li>
+        <li>Sneakers</li>
+        <li>Dry fruits</li>
+        <li>Western wears</li>
+        <li>Mans wears</li>
+        <li>Furniture</li>
+        <li>Home use appliances</li>
+        <li>Toys</li>
+      </ul>
+    </div>
+  </div>
+
+<!--Add Products Propertys-->
+
+<div id="productbox">
+  <div id="productContainer"></div>
+</div>
+
+<!--Add JavaScript Fails-->
+<script>
+  // default red for home
+document.getElementById("home").classList.add("active");
+
+// सब बटन सेलेक्ट करो
+const buttons = document.querySelectorAll(".n");
+
+// सभी बटनों पर क्लिक इवेंट लगाओ
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    // पहले सभी से 'active' क्लास हटाओ
+    buttons.forEach(btn => btn.classList.remove("active"));
+
+    // क्लिक किए गए बटन पर 'active' क्लास लगाओ
+    button.classList.add("active");
+  });
+});
+</script>
+
+<script src="product.js"></script>
+  <script src="cart.js"></script>
+  <script src="web.js"></script>
+</body>
+ 
+</html>
