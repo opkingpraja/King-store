@@ -45,15 +45,9 @@ function saveCartToLocal() {
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
 
-// Save to Firebase
-function saveCartToFirebase() {
-  firebase.database().ref("cartItems").set(cartItems)
-    .then(() => console.log("Cart data saved to Firebase"))
-    .catch(error => console.error("Firebase save error:", error));
-}
-
 // Render cart
 function renderCartItems() {
+  document.querySelectorAll(".cartRow").forEach(row => row.remove());
   cartItems.forEach(product => {
     let row = document.createElement("tr");
     row.classList.add("cartRow");
@@ -87,24 +81,7 @@ document.addEventListener("add-to-cart", function(e) {
 
   cartItems.push({ ...product });
   saveCartToLocal();
-  saveCartToFirebase(); // Firebase Save
-
-  let row = document.createElement("tr");
-  row.classList.add("cartRow");
-  row.innerHTML = `
-    <td><button class="removeBtn">X</button></td>
-    <td>${product.name}</td>
-    <td><img src="${product.image}" alt="product" width="50"></td>
-    <td>
-      <button class="decQty">-</button>
-      <span class="qtyValue">${product.quantity}</span>
-      <button class="incQty">+</button>
-    </td>
-    <td>₹<span class="unitPrice">${product.price}</span></td>
-    <td>₹<span class="priceValue">${product.price * product.quantity}</span></td>
-  `;
-  cartTable.insertBefore(row, totalRow);
-  updateTotal();
+  renderCartItems();
 });
 
 // Remove
@@ -116,9 +93,7 @@ document.addEventListener("click", function(e) {
     showConfirmRemove("Remove product from your cart?", () => {
       cartItems = cartItems.filter(item => item.name !== name);
       saveCartToLocal();
-      saveCartToFirebase(); // Firebase Update
-      row.remove();
-      updateTotal();
+      renderCartItems();
     });
   }
 });
@@ -140,11 +115,8 @@ document.addEventListener("click", function(e) {
       product.quantity--;
     }
 
-    qtyElem.textContent = product.quantity;
-    priceElem.textContent = product.price * product.quantity;
     saveCartToLocal();
-    saveCartToFirebase(); // Firebase Update
-    updateTotal();
+    renderCartItems();
   }
 });
 
