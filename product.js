@@ -1,168 +1,208 @@
-let cart = document.querySelector("#cart");
-let cartoption = document.querySelector("#cartoption");
+let productContainer = document.getElementById("productContainer");
 
-cart.addEventListener("click", () => {
-  let computedStyle = window.getComputedStyle(cartoption);
-  cartoption.style.display = computedStyle.display === "none" ? "table" : "none";
-});
-
-let cartTable = document.querySelector("#cartoption");
-let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-// Total Row
-let totalRow = document.createElement("tr");
-totalRow.innerHTML = `
-  <td colspan="5" style="text-align:right;"><strong>Total:</strong></td>
-  <td><strong>₹<span id="totalAmount">0</span></strong></td>
-`;
-cartTable.appendChild(totalRow);
-
-// Buy Button Row
-let buyRow = document.createElement("tr");
-buyRow.innerHTML = `
-  <td colspan="6" style="text-align:right;">
-    <button id="cartbtn" style="padding: 10px 20px; background-color: green; color: white; border: none; cursor: pointer;">
-      Buy
-    </button>
-  </td>
-`;
-cartTable.appendChild(buyRow);
-
-document.addEventListener("click", function(e) {
-  if (e.target.id === "cartbtn") {
-    window.location.href = "/Web html/Buy.html";
+let products = [
+  {
+    iD: 1,
+    name: "lipstick",
+    image: "https://ik.imagekit.io/Prajapati/Benner1.jpg?updatedAt=1744544703953",
+    rating: 3,
+    reviews: 52,
+    price: 120,
+    quantity: 0,
+    category: "cosmetics"
+  },
+  {
+    iD: 2,
+    name: "Apple Shake",
+    image: "https://ik.imagekit.io/Prajapati/Benner1.jpg?updatedAt=1744544703953",
+    rating: 5,
+    reviews: 88,
+    price: 150,
+    quantity: 1,
+    category: "medical"
+  },
+  {
+    iD: 3,
+    name: "Banana Smoothie",
+    image: "https://ik.imagekit.io/Prajapati/Benner1.jpg?updatedAt=1744544703953",
+    rating: 3,
+    reviews: 35,
+    price: 99,
+    quantity: 1,
+    category: "journal"
+  },
+  {
+    iD: 4,
+    name: "Banana sweet",
+    image: "https://ik.imagekit.io/Prajapati/Benner1.jpg?updatedAt=1744544703953",
+    rating: 3,
+    reviews: 35,
+    price: 199,
+    quantity: 1,
+    category: "journal"
+  }, 
+  {
+  iD: 5,
+  name: "bet",
+  image: "https://ik.imagekit.io/Prajapati/Benner1.jpg?updatedAt=1744544703953",
+  rating: 3,
+  reviews: 35,
+  price: 159,
+  quantity: 1,
+  category: "toys"
   }
+];
+
+// Clear container first
+productContainer.innerHTML = "";
+
+products.forEach(function(product, index) {
+  let div = document.createElement("div");
+  div.className = "product";
+  div.innerHTML = `
+    <img src="${product.image}" alt="Product Image">
+    <div class="product-details">
+      <h3>${product.name}</h3>
+      <p>Rating: ${"★".repeat(product.rating)}${"☆".repeat(5 - product.rating)}</p>
+      <p>Reviews: ${product.reviews}</p>
+      <p>iD: ${product.iD}</p>
+      <p>Price: ₹${product.price}</p>
+      <p>Quantity: ${product.quantity}</p>
+      <button class="cartButton" data-index="${index}">Add to Cart</button>
+    </div>
+  `;
+
+  // Add to Cart button
+  div.querySelector(".cartButton").addEventListener("click", function (e) {
+    e.stopPropagation(); // div को expand होने से रोकने के लिए
+    let selectedProduct = products[index];
+    document.dispatchEvent(new CustomEvent("add-to-cart", { detail: selectedProduct }));
+  });
+
+  // Fullscreen expand on click
+  div.addEventListener("click", function () {
+    document.querySelectorAll(".product.expanded").forEach(el => {
+      el.classList.remove("expanded");
+      let close = el.querySelector(".close-btn");
+      if (close) close.remove();
+
+      let oldBuyBtn = el.querySelector(".buy-btn");
+      if (oldBuyBtn) oldBuyBtn.remove();
+    });
+
+    div.classList.add("expanded");
+
+    // Close button
+    let closeBtn = document.createElement("button");
+    closeBtn.className = "close-btn";
+    closeBtn.innerText = "×";
+    closeBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      div.classList.remove("expanded");
+      closeBtn.remove();
+
+      let buyBtn = div.querySelector(".buy-btn");
+      if (buyBtn) buyBtn.remove();
+    });
+    div.appendChild(closeBtn);
+
+    // Buy Now button
+    let buyBtn = document.createElement("button");
+    buyBtn.className = "buy-btn cartButton";
+    buyBtn.innerText = "Buy Now";
+
+    buyBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      window.location.href = " Buy.html"; // Navigate to the Buy page
+    });
+
+    let cartBtn = div.querySelector(".cartButton");
+    cartBtn.insertAdjacentElement("afterend", buyBtn);
+  });
+
+  productContainer.appendChild(div);
 });
 
-// Total Update
-function updateTotal() {
-  let total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  document.getElementById("totalAmount").textContent = total;
-}
 
-// Save to local storage
-function saveCartToLocal() {
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
-}
 
-// Render cart
-function renderCartItems() {
-  document.querySelectorAll(".cartRow").forEach(row => row.remove());
-  cartItems.forEach(product => {
-    let row = document.createElement("tr");
-    row.classList.add("cartRow");
-    row.innerHTML = `
-      <td><button class="removeBtn">X</button></td>
-      <td>${product.name}</td>
-      <td><img src="${product.image}" alt="product" width="50"></td>
-      <td>
-        <button class="decQty">-</button>
-        <span class="qtyValue">${product.quantity}</span>
-        <button class="incQty">+</button>
-      </td>
-      <td>₹<span class="unitPrice">${product.price}</span></td>
-      <td>₹<span class="priceValue">${product.price * product.quantity}</span></td>
-    `;
-    cartTable.insertBefore(row, totalRow);
-  });
-  updateTotal();
-}
-renderCartItems();
 
-// Add to cart event
-document.addEventListener("add-to-cart", function(e) {
-  let product = e.detail;
 
-  let exists = cartItems.find(item => item.name === product.name);
-  if (exists) {
-    showCustomAlert("Product is already added in your cart");
+function displayProductsByCategory(category) {
+  let filteredProducts = products.filter(product => 
+    product.category.toLowerCase() === category.toLowerCase()
+  );
+
+  productContainer.innerHTML = "";
+
+  if (filteredProducts.length === 0) {
+    productContainer.innerHTML = "<p>No products found in this category.</p>";
     return;
   }
 
-  cartItems.push({ ...product });
-  saveCartToLocal();
-  renderCartItems();
-});
-
-// Remove
-document.addEventListener("click", function(e) {
-  if (e.target.classList.contains("removeBtn")) {
-    let row = e.target.closest("tr");
-    let name = row.children[1].innerText;
-
-    showConfirmRemove("Remove product from your cart?", () => {
-      cartItems = cartItems.filter(item => item.name !== name);
-      saveCartToLocal();
-      renderCartItems();
-    });
-  }
-});
-
-// Quantity control
-document.addEventListener("click", function(e) {
-  if (e.target.classList.contains("incQty") || e.target.classList.contains("decQty")) {
-    let row = e.target.closest("tr");
-    let qtyElem = row.querySelector(".qtyValue");
-    let unitPrice = parseInt(row.querySelector(".unitPrice").textContent);
-    let priceElem = row.querySelector(".priceValue");
-    let name = row.children[1].innerText;
-    let product = cartItems.find(item => item.name === name);
-    if (!product) return;
-
-    if (e.target.classList.contains("incQty")) {
-      product.quantity++;
-    } else if (e.target.classList.contains("decQty") && product.quantity > 1) {
-      product.quantity--;
-    }
-
-    saveCartToLocal();
-    renderCartItems();
-  }
-});
-
-// Confirm Remove Box
-function showConfirmRemove(message, onConfirm) {
-  const existing = document.querySelector('.custom-alert');
-  if (existing) existing.remove();
-
-  let alertModal = document.createElement('div');
-  alertModal.classList.add('custom-alert');
-  alertModal.innerHTML = `
-    <div class="alert-content">
-      <span id="alertMessage">${message}</span>
-      <div style="margin-top: 15px;">
-        <button id="confirmRemove" class="btnConfirm">Yes</button>
-        <button id="cancelRemove" class="btnCancel">Cancel</button>
+  filteredProducts.forEach((product, index) => {
+    let div = document.createElement("div");
+    div.className = "product";
+    div.innerHTML = `
+      <img src="${product.image}" alt="Product Image">
+      <div class="product-details">
+        <h3>${product.name}</h3>
+        <p>Rating: ${"★".repeat(product.rating)}${"☆".repeat(5 - product.rating)}</p>
+        <p>Reviews: ${product.reviews}</p>
+        <p>iD: ${product.iD}</p>
+        <p>Price: ₹${product.price}</p>
+        <p>Quantity: ${product.quantity}</p>
+        <button class="cartButton" data-index="${index}">Add to Cart</button>
       </div>
-    </div>
-  `;
-  document.body.appendChild(alertModal);
-  alertModal.style.display = "flex";
+    `;
 
-  document.getElementById("confirmRemove").addEventListener("click", function () {
-    alertModal.remove();
-    onConfirm();
-  });
+    div.querySelector(".cartButton").addEventListener("click", function (e) {
+      e.stopPropagation();
+      let selectedProduct = filteredProducts[index];
+      document.dispatchEvent(new CustomEvent("add-to-cart", { detail: selectedProduct }));
+    });
 
-  document.getElementById("cancelRemove").addEventListener("click", function () {
-    alertModal.remove();
+    div.addEventListener("click", function () {
+      document.querySelectorAll(".product.expanded").forEach(el => {
+        el.classList.remove("expanded");
+        let close = el.querySelector(".close-btn");
+        if (close) close.remove();
+        let oldBuyBtn = el.querySelector(".buy-btn");
+        if (oldBuyBtn) oldBuyBtn.remove();
+      });
+
+      div.classList.add("expanded");
+
+      let closeBtn = document.createElement("button");
+      closeBtn.className = "close-btn";
+      closeBtn.innerText = "×";
+      closeBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        div.classList.remove("expanded");
+        closeBtn.remove();
+        let buyBtn = div.querySelector(".buy-btn");
+        if (buyBtn) buyBtn.remove();
+      });
+      div.appendChild(closeBtn);
+
+      let buyBtn = document.createElement("button");
+      buyBtn.className = "buy-btn cartButton";
+      buyBtn.innerText = "Buy Now";
+      buyBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        window.location.href = "Buy.html";
+      });
+
+      let cartBtn = div.querySelector(".cartButton");
+      cartBtn.insertAdjacentElement("afterend", buyBtn);
+    });
+
+    productContainer.appendChild(div);
   });
 }
 
-// Alert box
-function showCustomAlert(message) {
-  let alertModal = document.createElement('div');
-  alertModal.classList.add('custom-alert');
-  alertModal.innerHTML = `
-    <div class="alert-content">
-      <span id="alertMessage">${message}</span>
-      <button id="closeAlertBtn">OK</button>
-    </div>
-  `;
-  document.body.appendChild(alertModal);
-  alertModal.style.display = "flex";
-
-  document.getElementById("closeAlertBtn").addEventListener("click", function() {
-    alertModal.remove();
+document.querySelectorAll("#category ul li").forEach(item => {
+  item.addEventListener("click", function () {
+    const selectedCategory = this.textContent.trim();
+    displayProductsByCategory(selectedCategory);
   });
-}
+});
