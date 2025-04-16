@@ -30,7 +30,7 @@ cartTable.appendChild(buyRow);
 
 document.addEventListener("click", function(e) {
   if (e.target.id === "cartbtn") {
-    window.location.href = "/Web html/Buy.html";
+    window.location.href = "Buy.html";
   }
 });
 
