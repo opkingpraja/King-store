@@ -164,24 +164,5 @@
       <div class="status" id="status"></div>
     </div>
   </div>
-
-  <script>
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS Public Key
-
-    document.getElementById("feedbackForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const message = document.getElementById("feedbackMessage").value;
-
-      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-        message: message,
-        to_email: "op7076356@gmail.com"
-      }).then(function(response) {
-        document.getElementById("status").innerText = "Feedback sent successfully!";
-        document.getElementById("feedbackForm").reset();
-      }, function(error) {
-        document.getElementById("status").innerText = "Error sending feedback.";
-      });
-    });
-  </script>
 </body>
 </html>
