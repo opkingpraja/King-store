@@ -7,7 +7,6 @@
   <title>Clly Account</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-
   <style>
     * {
       box-sizing: border-box;
@@ -26,17 +25,9 @@
     }
 
     @keyframes animateBG {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     #information {
@@ -46,9 +37,7 @@
       backdrop-filter: blur(12px);
       box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
       max-width: 600px;
-      margin: auto;
-      color: white;
-      margin-top: 5em;
+      margin: 5em auto 0 auto;
     }
 
     #logo {
@@ -104,25 +93,13 @@
     }
 
     @media (max-width: 480px) {
-      #inlogo i {
-        font-size: 4em;
-      }
-
-      #information {
-        padding: 1.5em;
-      }
-
+      #inlogo i { font-size: 4em; }
+      #information { padding: 1.5em; }
       .in-information input,
-      .in-information textarea {
-        font-size: 0.95em;
-      }
-
-      #information button {
-        font-size: 1rem;
-      }
+      .in-information textarea { font-size: 0.95em; }
+      #information button { font-size: 1rem; }
     }
 
-    /* Success Prompt */
     #successPrompt {
       display: none;
       position: fixed;
@@ -136,6 +113,17 @@
       font-size: 1.1em;
       z-index: 999;
       transition: opacity 0.5s ease;
+    }
+
+    #successPrompt button {
+      background: none;
+      border: 2px solid white;
+      color: white;
+      padding: 0.3em 0.8em;
+      font-weight: bold;
+      margin-left: 1em;
+      border-radius: 8px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -151,41 +139,50 @@
     </div>
 
     <div class="in-information">Name <br>
-      <input type="text" name="name" id="username" placeholder="Enter Your Name">
+      <input type="text" id="username" placeholder="Enter Your Name">
     </div>
 
     <div class="in-information">E-mail <br>
-      <input type="email" name="email" id="email" placeholder="Enter Your E-mail">
+      <input type="email" id="email" placeholder="Enter Your E-mail">
     </div>
 
     <div class="in-information">Enter Your Date Of Birth<br>
-      <input type="date" name="date" id="date">
+      <input type="date" id="date">
     </div>
 
     <div class="in-information">Country<br>
-      <input type="text" name="country" id="country" placeholder="Enter Your Country">
+      <input type="text" id="country" placeholder="Enter Your Country">
     </div>
 
     <div class="in-information">State <br>
-      <input type="text" name="state" id="state" placeholder="Enter Your State">
+      <input type="text" id="state" placeholder="Enter Your State">
     </div>
 
     <div class="in-information">City <br>
-      <input type="text" name="city" id="city" placeholder="Enter Your City">
+      <input type="text" id="city" placeholder="Enter Your City">
     </div>
 
     <div class="in-information">Phone Number <br>
-      <input type="number" name="number" id="number" placeholder="Enter Your Number">
+      <input type="number" id="number" placeholder="Enter Your Number">
     </div>
 
     <div class="in-information">Add Location Bio <br>
-      <textarea name="message" id="message" placeholder="Write something..."></textarea>
+      <textarea id="message" placeholder="Write something..."></textarea>
     </div>
 
-    <button>Save</button>
+    <button onclick="saveUserData()">Save</button>
 
   </div>
 
+  <!-- Success Message -->
+  <div id="successPrompt">
+    Your Information is Saved
+    <button onclick="document.getElementById('successPrompt').style.display='none'">OK</button>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="user-data-fairbass.js"></script>
 
 </body>
 
