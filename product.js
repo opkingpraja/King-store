@@ -4,7 +4,7 @@ let products = [
   {
     iD: 1,
     name: "Mex Fresh",
-    image: "Products images/max fresh Colgate.jpg",
+    image: "https://github.com/opkingpraja/King-store/blob/main/Products%20images%2Fmex%20fresh%20Colgate.jpg",
     rating: 3,
     reviews: 52,
     price: 120,
