@@ -20,37 +20,8 @@ let products = [
     price: 78,
     quantity: 1,
     category: "Cosmetics"
-  },
-  {
-    iD: 3,
-    name: "Banana Smoothie",
-    image: "https://ik.imagekit.io/Prajapati/Benner1.jpg?updatedAt=1744544703953",
-    rating: 3,
-    reviews: 35,
-    price: 99,
-    quantity: 1,
-    category: "journal"
-  },
-  {
-    iD: 4,
-    name: "Banana sweet",
-    image: "https://ik.imagekit.io/Prajapati/Benner1.jpg?updatedAt=1744544703953",
-    rating: 3,
-    reviews: 35,
-    price: 199,
-    quantity: 1,
-    category: "journal"
-  }, 
-  {
-  iD: 5,
-  name: "bet",
-  image: "https://ik.imagekit.io/Prajapati/Benner1.jpg?updatedAt=1744544703953",
-  rating: 3,
-  reviews: 35,
-  price: 159,
-  quantity: 1,
-  category: "toys"
   }
+  
 ];
 
 // Clear container first
