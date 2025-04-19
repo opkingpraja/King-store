@@ -8,7 +8,7 @@ let products = [
     rating: 3,
     reviews: 52,
     price: 120,
-    quantity: 0,
+    quantity: 1,
     category: "General"
   },
   {
