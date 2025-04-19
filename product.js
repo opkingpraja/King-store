@@ -4,20 +4,20 @@ let products = [
   {
     iD: 1,
     name: "Mex Fresh",
-    image: "https://github.com/opkingpraja/King-store/blob/main/Products%20images%2Fmex%20fresh%20Colgate.jpg",
+    image: "https://ik.imagekit.io/Prajapati/mex%20fresh%20Colgate.jpg?updatedAt=1745050721975",
     rating: 3,
     reviews: 52,
-    price: 120,
+    price: 20,
     quantity: 1,
     category: "General"
   },
   {
     iD: 2,
     name: "Hum Tum Perfume",
-    image: "Products images/Hum Tum.jpg",
+    image: "https://ik.imagekit.io/Prajapati/Hum%20Thum.jpg?updatedAt=1745050721704",
     rating: 5,
     reviews: 88,
-    price: 150,
+    price: 78,
     quantity: 1,
     category: "Cosmetics"
   },
