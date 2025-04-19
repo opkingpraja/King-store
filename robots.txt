@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://opkingpraja.github.io/King-store/sitemap.xml
