@@ -3,23 +3,23 @@ let productContainer = document.getElementById("productContainer");
 let products = [
   {
     iD: 1,
-    name: "lipstick",
-    image: "https://ik.imagekit.io/Prajapati/Benner1.jpg?updatedAt=1744544703953",
+    name: "Mex Fresh",
+    image: "Products images/max fresh Colgate.jpg",
     rating: 3,
     reviews: 52,
     price: 120,
     quantity: 0,
-    category: "cosmetics"
+    category: "General"
   },
   {
     iD: 2,
-    name: "Apple Shake",
-    image: "https://ik.imagekit.io/Prajapati/Benner1.jpg?updatedAt=1744544703953",
+    name: "Hum Tum Perfume",
+    image: "Products images/Hum Tum.jpg",
     rating: 5,
     reviews: 88,
     price: 150,
     quantity: 1,
-    category: "medical"
+    category: "Cosmetics"
   },
   {
     iD: 3,
